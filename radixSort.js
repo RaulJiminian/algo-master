@@ -30,6 +30,9 @@ function mostDigits(nums) {
 //  - Place each number in the corresponding bucket based on its kth digit
 // Replace our existing array with values in our buckets, starting with 0 and going up to 9
 // Return list at the end
+// Big O Notation:
+//  - Time complexity: O(nk) in best, average, and worst case scenario
+//  - Space complexity: O(n + k)
 
 function radixSort(nums) {
   let maxDigitCout = mostDigits(nums);
@@ -40,9 +43,10 @@ function radixSort(nums) {
       let digit = getDigit(nums[i], k);
       digitBuckets[digit].push(nums[i]);
     }
+    console.log(digitBuckets);
     nums = [].concat(...digitBuckets);
+    console.log(nums);
   }
-
   return nums;
 }
 
