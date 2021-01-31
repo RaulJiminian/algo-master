@@ -5,6 +5,7 @@
 
 // This function should accept a value
 // It will add a node to the end of the DLL with the value passed to the function
+// It should return the DLL
 
 // ------------------------------------
 //       -- STARTER CODE --
@@ -45,15 +46,6 @@
 // dll.tail.val // 15
 // dll.tail.prev.val // 10
 // dll.head.next.next.val // 15
-
-// dll.pop().val // 15
-// dll.length // 2
-// dll.pop().val // 10
-// dll.length // 1
-// dll.pop().val // 5
-// dll.length // 0
-// dll.pop() // undefined
-// dll.length // 0
 
 // ------------------------------------
 //       -- SOLUTION BELOW --
