@@ -17,7 +17,7 @@ class Node {
 // first.next = new Node("there")
 // console.log(first)
 
-// Define your Linked List Below
+// Define your Singly Linked List Below
 // - Big O Notation
 //   - Insertion -  O(1)
 //   - Removal - It depends…O(1) or O(n)
