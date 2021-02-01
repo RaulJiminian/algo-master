@@ -1,4 +1,11 @@
 // Stack
+// - Big O Notation:
+//    - Insertion/Removal from the front of a singly linked list in the linked list implementation
+//        - Insertion -  O(1)
+//        - Removal - O(1)
+//    - Searching/Access not important for stacks (otherwise you’d use a different data structure other than a linked list):
+//        - Searching - O(n)
+//        - Access - O(n)
 
 // Singly Linked List Implementation of a Stack
 // **Note**: We are using push() and pop() as a way to add/remove from the FRONT of the linked list (not the END)
