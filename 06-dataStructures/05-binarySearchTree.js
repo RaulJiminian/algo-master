@@ -30,7 +30,7 @@ class BinarySearchTree {
     this.root = null;
   }
 
-  // - Insert Pseudocode (iteratively or recursively)
+  // Insert Pseudocode (iteratively or recursively)
   // - Create a new node
   // - Starting at the root
   //   - Check if there is a root, if not - the root now becomes that new node
@@ -73,7 +73,7 @@ class BinarySearchTree {
     }
   }
 
-  // - Find Pseudocode for BST (iteratively or recursively)
+  // Find Pseudocode for BST (iteratively or recursively)
   // - Starting at the root
   //   - Check if there is a root, if not - return false as we’re done searching
   //   - If there is a root, check if the value is the value we are looking for. If we found it, return node
