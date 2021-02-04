@@ -1,4 +1,10 @@
 // Binary Heap
+// Big O Notation:
+// - Binary Heaps (mix and max) are great at insertion and removal
+// - Insertion - O(log n)
+// - Removal - O(log n)
+// - Search - O(n)
+
 class MaxBinaryHeap {
   constructor() {
     this.values = [];
