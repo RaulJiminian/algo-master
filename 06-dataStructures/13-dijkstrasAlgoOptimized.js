@@ -1,30 +1,92 @@
-// Dijkstra’s Algorithm (Shortest Path Algorithm)
+// Dijkstra’s Algorithm (Shortest Path Algorithm) - OPTIMIZED
 // To implement this algorithm, it is important to know graphs (weighted) and priority queues created with a binary heap
+// Optimized Solution using a Priority Queue generated as a binary heap (simple weight graph however)
 
-// Simple Priority Queue (using built in methods for sorting, etc.) - NOT OPTIMIZED
-// This version of a simple priority queue is the unoptimized version of dijkstra's algorithm (as we should use a binary heap for a priority queue)
-// Notice we are sorting every single time which is O(n * log n)
-// Please note - There are better implementations of Priority Queues using a binary heap. The below is for simplification purposes
+// Priority Queue (min binary heap implementation)
+// Higher priority items get a lower priority number (0 high priority; 5 low priority for instance)
+class Node {
+  constructor(val, priority) {
+    this.val = val;
+    this.priority = priority;
+  }
+}
+
 class PriorityQueue {
   constructor() {
     this.values = [];
   }
 
   enqueue(val, priority) {
-    this.values.push({ val, priority });
-    this.values.sort();
+    let newNode = new Node(val, priority);
+    this.values.push(newNode);
+    this.bubbleUp();
+  }
+
+  bubbleUp() {
+    let idx = this.values.length - 1;
+    const element = this.values[idx];
+
+    while (idx > 0) {
+      let parentIdx = Math.floor((idx - 1) / 2);
+      let parent = this.values[parentIdx];
+
+      // changing the direction of the sing (>= versus <=) switches this from a max to a min binary heap
+      if (element.priority >= parent.priority) break;
+      this.values[parentIdx] = element;
+      this.values[idx] = parent;
+      idx = parentIdx;
+    }
   }
 
   dequeue() {
-    return this.values.shift();
+    const min = this.values[0];
+    const end = this.values.pop();
+
+    // Edge case for when you are down to one item in the list
+    if (this.values.length > 0) {
+      this.values[0] = end;
+      // Sink down (or bubble down) the first item in binary heap to where it belongs
+      this.sinkDown();
+    }
+
+    return min;
   }
 
-  sort() {
-    this.values.sort((a, b) => a.priority - b.priority);
+  sinkDown() {
+    let idx = 0;
+    const element = this.values[0];
+    const length = this.values.length;
+
+    while (true) {
+      let leftChildIdx = 2 * idx + 1;
+      let rightChildIdx = 2 * idx + 2;
+      let leftChild, rightChild;
+      let swap = null;
+
+      if (leftChildIdx < length) {
+        leftChild = this.values[leftChildIdx];
+        if (leftChild.priority < element.priority) {
+          swap = leftChildIdx;
+        }
+      }
+      if (rightChildIdx < length) {
+        rightChild = this.values[rightChildIdx];
+        if (
+          (swap === null && rightChild.priority < element.priority) ||
+          (swap !== null && rightChild.priority < leftChild.priority)
+        ) {
+          swap = rightChildIdx;
+        }
+      }
+
+      if (swap === null) break;
+      this.values[idx] = this.values[swap];
+      this.values[swap] = element;
+      idx = swap;
+    }
   }
 }
 
-// Simple weighted graph below
 class WeightedGraph {
   constructor() {
     this.adjacencyList = {};
@@ -39,20 +101,6 @@ class WeightedGraph {
     this.adjacencyList[v2].push({ node: v1, weight });
   }
 
-  // Dijkstra’s Pseudocode
-  // - Write a function that accepts a starting and ending vertex
-  // - Create an object (we’ll call it distances) and set each key to be every vertex in the adjacency list with a value of infinity, except for the starting vertex which should have a value of 0
-  // - After setting a value in the distances object, add each vertex with a priority of Infinity to the priority queue, except the starting vertex, which should have a priority of 0 because that’s where we begin
-  // - Create another object called previous and set each key to be every vertex in the adjacency list with a value of null
-  // - Start looping as long as there is anything in the priority queue
-  //   - Dequeue a vertex from the priority queue
-  //   - If that vertex is the same as the ending vertex - we are done!
-  //   - Otherwise loop through each value in the adjacency list at that vertex
-  //     - Calculate the distance to that vertex from the starting vertex
-  //     - If that distance is less than what is currently stored in our distances object
-  //       - Update the distances object with new lower distance
-  //       - Update the previous object to contain that vertex
-  //       - Enqueue the vertex with the total distance from the start node
   dijkstra(start, finish) {
     const nodes = new PriorityQueue();
     const distances = {};
