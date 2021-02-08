@@ -9,8 +9,8 @@
 
 // Define a Node:
 //  - A node stores a piece of data (val)
-//  - A reference to the next node (next)
-//  - A reference to the previous node (previous)
+//  - A reference to the left node (left)
+//  - A reference to the right node (right)
 
 class Node {
   constructor(val) {
