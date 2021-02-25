@@ -30,19 +30,26 @@ class BinarySearchTree {
     this.root = null;
   }
 
-  // Insert Pseudocode (iteratively or recursively)
+  // Insert Pseudocode (iteratively)
+  // - Create a function called insert() that takes a value as an argument
   // - Create a new node
   // - Starting at the root
-  //   - Check if there is a root, if not - the root now becomes that new node
-  //   - If there is a root, check if the value of the new node is greater than or less than the value of the root
+  //   - Check if there is a root, if not
+  //     - The root now becomes that new node
+  //     - Return this (the entire Binary Search Tree)
+  //   - Else (if there is a root)
+  //   [let current = this.root]
+  //   [Use a while loop, with the condition set to the boolean true]
+  //   - Check if the value of the new node is greater than or less than the value of the root
+  //   - If the values are equal; return undefined
+  //   - If the value passed is less than current value
+  //     - Check to see if there is a node to the left
+  //        - If there is, move to that node and repeat these steps
+  //        - If there is not, add that node as the left property
   //   - If it is greater
   //     - Check to see if there is a node to the right
   //        - If there is, move to that node and repeat these steps
   //        - If there is not, add that node as the right property
-  //   - If it is less
-  //     - Check to see if there is anode to the left
-  //        - If there is, move to that node and repeat these steps
-  //        - If there is not, add that node as the left property
   insert(val) {
     let newNode = new Node(val);
 
@@ -76,16 +83,18 @@ class BinarySearchTree {
   // Find Pseudocode for BST (iteratively or recursively)
   // - Starting at the root
   //   - Check if there is a root, if not - return false as we’re done searching
-  //   - If there is a root, check if the value is the value we are looking for. If we found it, return node
-  //   - If not, check to see if the value is greater or less than the value of the root
-  //   - If it is greater
-  //     - Check to see if there is a node to the right
-  //        - If there is, move to that node and repeat these steps
-  //        - If there is not, return false as we’re done searching
+  //  [let current = this.root]
+  //  [let found = false]
+  //   - If there is a root, start a while loop with the following conditional: while there is a current (starting with root) and !found
+  //   - Check to see if the value is greater or less than the value of the root
   //   - If it is less
-  //     - Check to see if there is a node to the left
-  //        - If there is, move to that node and repeat these steps
-  //        - If there is not, return false as we’re done searching
+  //     - reassign current to the left node
+  //   - If it is greater
+  //     - reassign current to the right node
+  //   - Else
+  //     - reassign found to true
+  //   - Outside of the while loop, check to see if not found (!found) return false
+  //   - Return current
   find(val) {
     if (!this.root) return false;
 
