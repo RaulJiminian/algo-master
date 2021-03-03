@@ -22,15 +22,16 @@ class Graph {
   // - Depth first traversal for a graph means moving away from the vertex you started from
 
   // DFS (Recursive Iteration) Pseudocode
-  // - The function should accept a starting node
-  // - Create a list to store the end result, to be returned at the very end
-  // - Create an object to store visited vertices
-  // - Create a helper function which accepts a vertex
-  //    - If the vertex is empty, the helper function should return early
-  //    - The helper function should place the vertex it accepts into the visited object and push that vertex into the result array
-  //    - Loop over all of the values in the adjacencyList for that vertex
-  //    - If any of those values have not been visited, recursively invoke the helper function with that vertex
-  // - Invoke the helper function with the starting vertex
+  // - Create a function called DFSrecursive, it accepts a starting node
+  // - Initialize a variable (result), which will serve as a list that stores the end result, assign it to an empty array
+  // - Initialize a variable (visited), which will serve as an object to store visited vertices, assign it to an empty object
+  // - Create a helper function (dfs) which accepts a vertex
+  //    - If the vertex is empty, the helper function should return null
+  //    - Insert the boolean (true) into the visited object for the vertex passed into the helper function
+  //    - Push the vertex passed into the helper function into the result array
+  //    - Loop over all of the values in the adjacencyList for that vertex using forEach
+  //      - If any of those values have not been visited, recursively invoke the helper function (dfs) with that vertex
+  // - Invoke the helper function with the starting vertex (use an IIFE)
   // - Return the result array
   DFSrecursive(start) {
     const result = [];
@@ -52,17 +53,19 @@ class Graph {
   }
 
   // DFS (Iterative Iteration) Pseudocode
-  // - The function should accept a starting node
-  // - Create a Stack to help us keep track of vertices (use a list/array); add the starting vertex to the stack
-  // - Create a list to store the end result, to be returned at the very end
-  // - Create an object to store visited vertices
-  // - Mark start vertex to visited
-  // - While the stack has something in it:
-  //    - Pop the next vertex from the stack
-  //    - Add it to the result list
-  //    - Loop through the neighbors of the vertex; if that neighbor vertex hasn’t been visited yet:
-  //       - Mark it as visited
-  //       - Push all of its neighbors into the stack
+  // - Create a function called DFSiterative, it accepts a starting node
+  // - Initialize a variable (stack), it will serve as a Stack data structure and will help us keep track of vertices; assign it to an array and add the starting vertex to the stack
+  // - Initialize a variable (result), which will serve as a list that stores the end result, assign it to an empty array
+  // - Initialize a variable (visited), which will serve as an object to store visited vertices, assign it to an empty object
+  // - Initialize a variable (currentVertex) use the let keyword (so that we can reassign later); do not set this variable to anything
+  // - Set visted (at vertex passed into the function) to the boolean true
+  // - Start a While loop, continue so long as there is something in the stack (stack.length):
+  //    - Pop() from the stack, and reassign currentVertex to that value
+  //    - Push() currentVertex into the result array
+  //    - Loop through the "neighbors" of the vertex (use forEach)
+  //       - If that "neighbor" vertex hasn’t been visited yet:
+  //         - Mark it as visited
+  //         - Push each neighbor into the stack
   // - Return the result array
   DFSiterative(start) {
     const stack = [start];
@@ -87,15 +90,19 @@ class Graph {
   }
 
   // BFS Pseudocode
-  // - The function should accept a starting node
-  // - Create a Queue (use a an array for simplification) and place the starting vertex in it
-  // - Create an array to store the nodes visited
-  // - Create an object to store nodes visited
-  // - Mark the starting vertex as visited
-  // - Loop as long as there is anything in the queue
-  // - Remove the first vertex from the queue and push it into the array that stores nodes visited
-  // - Loop over each vertex in the adjacency list for the vertex you are visiting
-  // - If it is not inside the object that stores nodes visited, mark it as visited and enqueue that vertex
+  // - Create a function called BFS, it accepts a starting node
+  // - Initialize a variable (queue), it will serve as a Queue data structure and will help us keep track of vertices; assign it to an array and add the starting vertex to the queue
+  // - Initialize a variable (result), which will serve as a list that stores the end result, assign it to an empty array
+  // - Initialize a variable (visited), which will serve as an object to store visited vertices, assign it to an empty object
+  // - Initialize a variable (currentVertex) use the let keyword (so that we can reassign later); do not set this variable to anything
+  // - Set visted (at vertex passed into the function) to the boolean true
+  // - Using a While loop, loop as long as there is anything in the queue (queue.length)
+  //   - Shift() the first vertex from the queue, reassign currentVertex to that value
+  //   - Push() currentVertex into the result array
+  // - Loop over each vertex in the adjacency list for the vertex you are visiting (using forEach)
+  //   - If the "neighbor" is not inside the visited object:
+  //     - Mark it as visited and enqueue that vertex
+  //     - Enqueue that vertex by pushing into the queue array
   // - Once you have finished looping, return the array of visited nodes
   BFS(start) {
     const queue = [start];

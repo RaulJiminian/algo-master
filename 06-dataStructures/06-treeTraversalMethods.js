@@ -45,13 +45,17 @@ class BinarySearchTree {
   }
 
   // Breadth-first Search Pseudocode (BFS)
-  // - Create a variable called queue (this can be an array for simplification) and a variable called data to store the values of nodes visited (also an array)
-  // - Place the root node in the queue (using .push())
-  // - Loop as long as there is anything in the queue (an empty array results in a truthy value, so we use queue.length as the condition for the loop instead as 0 results in falsey)
-  //    - Dequeue a node from the queue and push the value of the node into the variable that stores the nodes
-  //    - If there is a left property on the node dequeued - add it to the queue
-  //    - If there is a right property on the node dequeued - add it to the queue
-  // - Return the variable that stores the values
+  // - Create a function BFS() that does not take any arguments
+  // - Initialize a variable called data and assign it to an empty array literal (this will store the values of nodes visited)
+  // - Initialize a variable called queue and assign it to an empty array literal (this will serve as our queue, we are using an array for simplification)
+  // - Initialize a variable called node and assign it to this.root
+  // - Push node into the queue
+  // - Using a while loop, loop as long as there is anything in the queue (we can use queue.length as the condition for the loop as 0 will result in falsey; an empty array results in a truthy value)
+  //    - Reassign node to the dequeued node from the queue (using shift())
+  //    - Push the *value* of the node into the data array
+  //    - If there is a left property on the node dequeued (node.left) - push the left node into the queue
+  //    - If there is a right property on the node dequeued (node.right) - push the right node into the queue
+  // - Outside of the while loop, return the data array
   BFS() {
     let data = [];
     let queue = [];
@@ -70,14 +74,16 @@ class BinarySearchTree {
   }
 
   // Depth-first Search (DFS) - PreOrder
-  // - Traverse tree by visiting all left nodes first (down each level until all lefts are completed). We will use recursion to handle this
-  // - Create a variable to store the values of nodes visited (called data and set to an empty array)
-  // - Write a helper function (traverse()) which accepts a node
-  //    - Push the value of the node to the data array
-  //    - If the node has a left property, call (recursively) the helper function with the left property on the node
-  //    - If the node has a right property, call (recursively) the helper function with the right property on the node
-  // - Invoke the helper function starting with the root of the tree
-  // - Return the array of values (data)
+  // - Requirement: Recursion
+  // - Goal: To traverse the tree by visiting all left nodes first (down each level until all lefts are completed)
+  // - Initialize a variable called data and assign it to an empty array literal (this will store the values of nodes visited)
+  // - Write a helper function called traverse() which accepts a node
+  //    - Push the *value* of the node passed into the function to the data array
+  //    - If the node has a left property (node.left), call (recursively) the helper function with the left property on the node (node.left)
+  //    - If the node has a right property (node.right), call (recursively) the helper function with the right property on the node (node.right)
+  // - Outside of the helper function, invoke the helper function starting with the root of the tree
+  // - Return the data array
+
   DFSPreOrder() {
     let data = [];
 
@@ -92,11 +98,11 @@ class BinarySearchTree {
   }
 
   // DFS - PostOrder
-  // - Practically identical to PreOrder (see above), except we insert a node value to the data array after we have traversed the left side (and right side)
+  // - Practically identical to PreOrder, except we insert a node value to the data array after we have traversed the left side (and right side)
   // - The order for the helper function is now as follows:
-  //     - If the node has a left property, call (recursively) the helper function with the left property on the node
-  //     - If the node has a right property, call (recursively) the helper function with the right property on the node
-  //     - Push the value of the node to the data array
+  //     - If the node has a left property (node.left), call (recursively) the helper function with the left property on the node (node.left)
+  //     - If the node has a right property (node.right), call (recursively) the helper function with the right property on the node (node.right)
+  //     - Push the *value* of the node passed into the function to the data array
   DFSPostOrder() {
     let data = [];
 
@@ -113,9 +119,9 @@ class BinarySearchTree {
   // DFS - InOrder
   // - Also practically identical to above DFS methods. This time however, we visit all left nodes and push the value of the last left leaf, then move onto the right
   // - The order for the helper function is now as follows:
-  //     - If the node has a left property, call (recursively) the helper function with the left property on the node
-  //     - Push the value of the node to the data array
-  //     - If the node has a right property, call (recursively) the helper function with the right property on the node
+  //     - If the node has a left property (node.left), call (recursively) the helper function with the left property on the node (node.left)
+  //     - Push the *value* of the node passed into the function to the data array
+  //     - If the node has a right property (node.right), call (recursively) the helper function with the right property on the node (node.right)
   DFSInOrder() {
     let data = [];
 
@@ -145,6 +151,7 @@ class BinarySearchTree {
 // tree.insert(3)
 // tree.insert(8)
 // tree.insert(20)
+// tree.BFS() // [ 10, 6, 15, 3, 8, 20 ]
 // tree.DFSPreOrder() // [10, 6, 3, 8, 15, 20]
 // tree.DFSPostOrder() // [3, 8, 6, 20, 15, 10]
 // tree.DFSInOrder() // [3, 6, 8, 10, 15, 20]

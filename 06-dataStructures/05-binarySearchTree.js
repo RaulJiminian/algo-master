@@ -116,6 +116,13 @@ class BinarySearchTree {
   }
 }
 
+// Tree Visual Example:
+//      10
+//    /    \
+//   5      13
+//  / \    /  \
+// 2   7  11  16
+
 // let tree = new BinarySearchTree();
 // tree.insert(10)
 // tree.insert(5)
