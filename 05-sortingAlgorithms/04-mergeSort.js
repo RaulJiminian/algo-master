@@ -27,6 +27,7 @@ function merge(arr1, arr2) {
     results.push(arr1[i]);
     i++;
   }
+
   while (j < arr2.length) {
     results.push(arr2[j]);
     j++;
@@ -35,7 +36,7 @@ function merge(arr1, arr2) {
   return results;
 }
 
-// merge([1, 10, 50], [2, 14, 99, 100]);
+// merge([2, 14, 99, 100], [1, 10, 50]);
 // merge([], [2, 14]);
 
 // mergeSort Pseudocode:

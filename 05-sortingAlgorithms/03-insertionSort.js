@@ -19,7 +19,6 @@
 //   return arr;
 // }
 
-// console.log(insertionSort([2, 1, 9, 33, 18, 4]));
 
 function insertionSort(arr) {
   // Step 1: Start loop at 1
@@ -44,4 +43,4 @@ function insertionSort(arr) {
   return arr;
 }
 
-insertionSort([2, 1, 9, 33, 18, 4]);
+insertionSort([2, 33, 9, 1, 18, 4]);

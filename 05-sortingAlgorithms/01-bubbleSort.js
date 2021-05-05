@@ -15,7 +15,7 @@
 //   return arr
 // }
 
-// console.log(bubbleSort([29, 10, 14, 37, 14, 30, 17]))
+// console.log(bubbleSort([29, 10, 14, 37, 30, 17]))
 
 // Bubble Sort
 // Version 2: Naive version refactored
@@ -61,6 +61,8 @@ function bubbleSort(arr) {
   }
   return arr;
 }
+
+// console.log(bubbleSort([10, 14, 29, 17, 30, 37]))
 
 // let data = Array.apply(null, {length: 10}).map(Function.call, Math.random)
 // console.log(bubbleSort(data));
