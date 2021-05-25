@@ -15,6 +15,7 @@ class Node {
 // Example of how node creation works:
 // let first = new Node("Hi")
 // first.next = new Node("there")
+// first.next.next = new Node("buddy")
 // console.log(first)
 
 // Define your Singly Linked List Below
