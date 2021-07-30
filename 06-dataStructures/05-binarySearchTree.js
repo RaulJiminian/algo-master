@@ -31,25 +31,25 @@ class BinarySearchTree {
   }
 
   // Insert Pseudocode (iteratively)
-  // - Create a function called insert() that takes a value as an argument
+  // - Create a method called insert() that takes a value as an argument
   // - Create a new node
   // - Starting at the root
   //   - Check if there is a root, if not
   //     - The root now becomes that new node
   //     - Return this (the entire Binary Search Tree)
   //   - Else (if there is a root)
-  //   [let current = this.root]
-  //   [Use a while loop, with the condition set to the boolean true]
-  //   - Check if the value of the new node is greater than or less than the value of the root
+  //   - Initialize a variable called current and assign it to the root of the tree
+  //   - Use a while loop, with the condition set to the boolean true
   //   - If the values are equal; return undefined
+  //   - Note: We will now need to check if the value of the new node is greater than or less than the value of the root
   //   - If the value passed is less than current value
   //     - Check to see if there is a node to the left
-  //        - If there is, move to that node and repeat these steps
-  //        - If there is not, add that node as the left property
+  //        - If there is not, add that node as the left property; return the tree
+  //        - If there is, move to that node and repeat these steps (reassign current to the left node)
   //   - If it is greater
   //     - Check to see if there is a node to the right
-  //        - If there is, move to that node and repeat these steps
-  //        - If there is not, add that node as the right property
+  //        - If there is not, add that node as the right property; return the tree
+  //        - If there is, move to that node and repeat these steps (reassign current to the right node)
   insert(val) {
     let newNode = new Node(val);
 

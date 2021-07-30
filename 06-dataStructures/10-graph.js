@@ -9,8 +9,9 @@ class Graph {
   }
 
   // Adding a Vertex Pseudocode
-  // - Create a method called addVertex, which accepts a name of a vertex (let's use "A", "B", "C", etc.)
-  // - It should add a key to the adjacency list with the name of the vertex and set its value to be an empty array
+  // - Create a method called addVertex, which accepts a name of a vertex (such as "Dallas", "Tokyo", "New York", etc.)
+  // - If a vertex does not exist:
+  //   - It should add a key (vertex) to the adjacency list and set its value to be an empty array
   addVertex(vertex) {
     if (!this.adjacencyList[vertex]) this.adjacencyList[vertex] = [];
   }
@@ -38,7 +39,7 @@ class Graph {
 
   // Removing a Vertex
   // - Create a function called removeVertex, which accepts a vertex to remove
-  // - Using a while loop, long as long as there are any vertices connected to that vertex in the adjacency list
+  // - Using a while loop, as long as there are any vertices connected to that vertex in the adjacency list (you can check for the length of the array)
   // - Inside of the loop:
   //   - Initialize a variable called adjacentVertex, and assign it to a vertex from the adjaceny list (using pop())
   //   - Call removeEdge and pass it the vertex we are removing (vertex being passed into the function) and any values in the adjacency list for that vertex (adjacentVertex)

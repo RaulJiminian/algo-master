@@ -18,13 +18,18 @@
 //   // Loop through length of string
 //   for (let i = 0; i < key.length; i++) {
 //     let char = key[i];
-//     // value represents character code for the char, minus 96 (arbitrary number)
+//     // value represents character code for the char, minus 96 (gives position in alphabet)
 //     let value = char.charCodeAt(0) - 96;
 //     // Using Modulus of array length on the value ensures the number returned always within the range of the length of the array
 //     total = (total + value) % arrayLen;
 //   }
 //   return total;
 // }
+
+// Issues with Naive Hash:
+// Only works with strings (we are not going to worry about that for now)
+// Not constant time - linear O(n); runtime increases as key length increases
+// Could be a little more random (things can cluster)
 
 // Simple version implementation of HashTable (for learning purposes only)
 class HashTable {
@@ -43,7 +48,7 @@ class HashTable {
     // Loop through length of string
     for (let i = 0; i < Math.min(key.length, 100); i++) {
       let char = key[i];
-      // value represents character code for the char, minus 96 (arbitrary number)
+      // value represents character code for the char, minus 96 (gives position in alphabet)
       let value = char.charCodeAt(0) - 96;
       // Using Modulus of array length on the value ensures the number returned always within the range of the length of the array
       total = (total * WEIRD_PRIME + value) % this.keyMap.length;
@@ -53,8 +58,10 @@ class HashTable {
 
   // Set Pseudocode
   //  - Accepts a key and a value
-  //  - Hashes the key
-  //  - Store the key-value pair in the hash table array via separate chaining
+  //  - Hashes the key (store in variable called index)
+  //  - Store the key-value pair in the hash table array via separate chaining (meaning, in a nested structure)
+  //    - First, check to see if there is anything in keyMap at that index (hint: if statement)
+  //    - Then, push [key/value] pair into kepMap at index (hint: outside of the if statement)
   set(key, value) {
     let index = this._hash(key);
     if (!this.keyMap[index]) {
@@ -67,6 +74,9 @@ class HashTable {
   //  - Accepts a key
   //  - Hashes the key
   //  - Retrieves the key-value pair in the hash table
+  //     - Check to see if index at keyMap exists
+  //     - Loop through nested array
+  //     - if the key passed to the function matches the key of the element, return that element's value
   //  - If the key isn’t found, returns undefined
   get(key) {
     let index = this._hash(key);
