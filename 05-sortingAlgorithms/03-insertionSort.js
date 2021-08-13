@@ -19,7 +19,6 @@
 //   return arr;
 // }
 
-
 function insertionSort(arr) {
   // Step 1: Start loop at 1
   for (let i = 1; i < arr.length; i++) {
@@ -28,7 +27,7 @@ function insertionSort(arr) {
     // Step 2: Set start of loop (j) at left of i
     let j = i - 1;
     // Step 3: Start loop that continues while j >= 0
-    // Step 6: Add extra condition to check arr[j] is greater than curVal
+    // Step 6: Add extra condition to check arr[j] is greater than curVal (remove original condition; not necessary)
     while (j >= 0 && arr[j] > curVal) {
       // Step 7: Assign value of arr[j] to position of arr[j + 1]; we use j as a reference point (and not i) since j is moving further to the left
       arr[j + 1] = arr[j];
