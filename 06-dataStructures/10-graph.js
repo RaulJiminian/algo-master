@@ -51,6 +51,29 @@ class Graph {
     }
     delete this.adjacencyList[vertex];
   }
+
+  // Prints the vertex and adjacency list
+  printGraph() {
+    // get all the vertices
+    let get_keys = Object.keys(this.adjacencyList);
+
+    // iterate over the vertices
+    for (let i of get_keys) {
+      // great the corresponding adjacency list
+      // for the vertex
+      let get_values = this.adjacencyList[i];
+      let conc = "";
+
+      // iterate over the adjacency list
+      // concatenate the values into a string
+      for (let j of get_values) {
+        conc += j + " ";
+      }
+
+      // print the vertex and its adjacency list
+      console.log(i + " -> " + conc);
+    }
+  }
 }
 
 let g = new Graph();
@@ -65,3 +88,4 @@ g.addEdge("Hong Kong", "Tokyo");
 g.addEdge("Hong Kong", "Dallas");
 g.addEdge("Los Angeles", "Hong Kong");
 g.addEdge("Los Angeles", "Aspen");
+g.printGraph();

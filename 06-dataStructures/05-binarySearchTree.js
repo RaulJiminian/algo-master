@@ -1,7 +1,7 @@
 // Binary Search Tree
 
 // A Tree is a data structure that consists of nodes in a parent / child relationship
-// A Binary Tree is a type of Tree with the following rules:
+// A Binary Search Tree is a type of Binary Tree with the following rules:
 //   - Every parent node has at most two children
 //   - Every node to the left of a parent node is always less than the parent
 //   - Every node to the right of a parent node is always greater than the parent

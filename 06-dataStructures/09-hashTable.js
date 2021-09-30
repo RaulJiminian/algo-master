@@ -57,11 +57,11 @@ class HashTable {
   }
 
   // Set Pseudocode
-  //  - Accepts a key and a value
-  //  - Hashes the key (store in variable called index)
+  //  - Write a function called set that accepts a key and a value
+  //  - Hash the key and store the result in a variable called index
   //  - Store the key-value pair in the hash table array via separate chaining (meaning, in a nested structure)
-  //    - First, check to see if there is anything in keyMap at that index (hint: if statement)
-  //    - Then, push [key/value] pair into kepMap at index (hint: outside of the if statement)
+  //    - First, check to see if there is anything in keyMap at that index (hint: if statement), if there isn't then create an empty array at that index
+  //    - Then, push [key/value] pair into keyMap at index (hint: outside of the if statement)
   set(key, value) {
     let index = this._hash(key);
     if (!this.keyMap[index]) {
@@ -71,12 +71,12 @@ class HashTable {
   }
 
   // Get Pseudocode
-  //  - Accepts a key
-  //  - Hashes the key
+  //  - Write a function that accepts a key
+  //  - Hash the key and store the result in a variable called index
   //  - Retrieves the key-value pair in the hash table
-  //     - Check to see if index at keyMap exists
-  //     - Loop through nested array
-  //     - if the key passed to the function matches the key of the element, return that element's value
+  //     - First check to see if the index at keyMap exists
+  //     - If it does, loop through the nested array (length of keyMap at index)
+  //     - if the key passed to the function (keyMap at index at i at 0) matches the key passed to the function, return that element's value
   //  - If the key isn’t found, returns undefined
   get(key) {
     let index = this._hash(key);

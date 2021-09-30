@@ -1,13 +1,19 @@
 // Quick Sort
 
 // Pivot Helper Function Pseudocode:
-//  - It will help to accept three arguments: an array, a start index, and an end index (these can default to 0 and the array length minus 1, respectively)
-//  - Grab the pivot from the start of the array
-//  - Store the current pivot index in a variable (this will keep track of where the pivot should end up)
-//  - Loop through the array from the start until the end
-//      - If the pivot is greater than the current element, increment the pivot index variable and then swap the current element with the element at the pivot index
-//  - Swap the starting element (ie, the pivot) with the pivot index
-//  - Return the pivot index
+//  - Create a function called pivot that will accept three arguments
+//    - An array
+//    - A start index (default to 0)
+//    - An end index (default to array length minus 1)
+//  - Initialize a variable called pivot and set it to the array at start (this will help us organize our array; smaller values to the left, larger values to the right)
+//  - Initialize a variable called swapIdx and set it to start (this will keep track of where the pivot should end up; it is also what we return from this helper function)
+//  - Create a for loop that loops through the array; set i to start + 1, loop until i is <= end ("end" as in the variable, not array length)
+//      - Inside of the for loop, set a conditional:
+//        - If pivot is greater than array at i:
+//          - Increment swapIdx
+//          - Then swap array at i with the element at array at swapIdx
+//  - Outside of the for loop, swap the element at array at start (ie, the pivot) with the element at array at swapIdx with the pivot index
+//  - Return swapIdx
 
 function pivot(arr, start = 0, end = arr.length - 1) {
   let pivot = arr[start];
@@ -25,8 +31,8 @@ function pivot(arr, start = 0, end = arr.length - 1) {
   return swapIdx;
 }
 
-// pivot([4, 8, 2, 1, 5, 7, 6, 3]) => 3 (the index value)
 // pivot([4, 8, 2, 1, 5, 7, 6, 3]);
+// pivot([4, 8, 2, 1, 5, 7, 6, 3]) => 3 (the index value)
 
 // - Quick Sort Pseudocode:
 //  - Call the pivot helper on the array
@@ -43,4 +49,3 @@ function quickSort(arr, left = 0, right = arr.length - 1) {
   }
   return arr;
 }
-
