@@ -58,9 +58,10 @@ class SinglyLinkedList {
   // - Define a function called pop() and it doesn't take in any arguments
   // - If there are no nodes in the list, return undefined
   // - Loop through the list until you reach the tail
-  // - Set the next property of the 2nd to last node to be null
   // - Set the tail to be the 2nd to last node
+  // - Set the next property of the 2nd to last node to be null
   // - Decrement the length of the list by 1
+  // - If the length is now zero, remove the pointers to the removed node
   // - Return the value of the node removed
   pop() {
     if (!this.head) undefined;
@@ -98,6 +99,7 @@ class SinglyLinkedList {
 
     let currentHead = this.head;
     this.head = currentHead.next;
+    currentHead.next = null;
     this.length--;
 
     if (this.length === 0) {
@@ -248,3 +250,4 @@ const list = new SinglyLinkedList();
 list.push("HELLO");
 list.push("GOODBYE");
 list.push("!!!");
+console.log(list);
