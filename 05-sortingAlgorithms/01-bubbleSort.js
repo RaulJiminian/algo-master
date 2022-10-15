@@ -46,9 +46,8 @@
 // Big O (in a nearly sorted array): O(n)
 
 function bubbleSort(arr) {
-  let noSwaps;
   for (let i = arr.length; i > 0; i--) {
-    noSwaps = true;
+    let noSwaps = true;
     for (let j = 0; j < i - 1; j++) {
       console.log(arr, arr[j], arr[j + 1]);
       if (arr[j] > arr[j + 1]) {

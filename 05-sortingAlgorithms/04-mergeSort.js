@@ -58,3 +58,13 @@ function mergeSort(arr) {
 }
 
 mergeSort([14, 22, 78, 63, 74, 1, 10]);
+
+
+// function sum(number) {
+//   if (number===0) {
+//       return 0;
+//   }
+//   return number + sum(number-1);
+// }
+
+// sum(10);
